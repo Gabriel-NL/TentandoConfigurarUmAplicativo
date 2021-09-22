@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
-
+        Funcionador fnc = Funcionador.getFuncionador();
+        fnc.notas.add("");
 
 
 

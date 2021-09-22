@@ -24,7 +24,6 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
     private List<Button> caixaDeBotoes = new ArrayList<Button>();
 
     Funcionador fnc = Funcionador.getFuncionador();
-    //Funcionador fnc = new Funcionador();
 
     @Override
     public View onCreateView(
@@ -38,7 +37,7 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        fnc.Funciona(getContext());
 
 
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
@@ -51,19 +50,13 @@ public class FirstFragment extends Fragment implements View.OnClickListener {
 
 
         LinearLayout layout = (LinearLayout) getView().findViewById(R.id.layoutFragmentLages);//pega o layout
-        for (int i=1;i< 4;i++ ){// para cada elemento dentro do array, o for adicionara um botão
+        for (int i=1;i<fnc.getSize();i++ ){// para cada elemento dentro do array, o for adicionara um botão
             String nomebotao= "botao "+i;
             Button btn = new Button(getContext());
-
             fnc.Funciona(getContext());
-
-
-
             btn.setText(nomebotao);
             btn.setTextColor(Color.BLACK);
             btn.setId(i);
-
-            String aExibir = "Botao apertado: "+ Integer.toString(i);
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

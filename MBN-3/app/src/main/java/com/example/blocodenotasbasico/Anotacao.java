@@ -17,6 +17,7 @@ import android.content.res.Resources;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
 import android.view.Display;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -31,6 +33,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -43,7 +46,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Anotacao {
+public class Anotacao extends AppCompatActivity {
 
     private Context context;
     private SharedPreferences preferences;
@@ -51,6 +54,7 @@ public class Anotacao {
 
     private SharedPreferences.Editor editor;
     private  final String CHAVE_NOME="Nome";
+    private List<Button> caixaDeBotoes = new ArrayList<Button>();
 
 
 
@@ -99,6 +103,8 @@ public class Anotacao {
 
         //Snackbar.make(view,"Nota criada", Snackbar.LENGTH_LONG).show();
     }
+
+
 
 }
 

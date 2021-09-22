@@ -24,7 +24,6 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,14 +39,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        /*
-        sem isto, o fragment first não funciona
-        *
-        *
-        * */
-
-        //aqui embaixo, as notas são armazenadas
-        conteudo();
         setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
@@ -100,7 +91,12 @@ public class MainActivity extends AppCompatActivity {
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
     }
-    public void conteudo(){
+
+}
+
+/*
+
+* public void conteudo(){
         LinearLayout layout = (LinearLayout) findViewById(R.id.layoutFragment);
         for (int i=0;i< 2;i++ ){
             String nomebotao= "botao "+i;
@@ -119,4 +115,5 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-}
+*
+* */

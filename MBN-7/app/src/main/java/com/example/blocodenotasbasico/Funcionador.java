@@ -19,65 +19,56 @@ public class Funcionador {
     public Set<String> setando = new HashSet<String>();
     public Integer notaselecionada;
     private static Funcionador INSTANCE= new Funcionador();
-
+    
 
 
     public void Funciona(Context context) {
-
         this.contextoLages=context;                                                   //O contexto que a funcao receber, entra aqui e é definido
         preferenciasLages = contextoLages.getSharedPreferences( NOME_DO_ARQUIVO,0);//a variavel preferences se torna o sharedPreferences do contexto
         editorLages = preferenciasLages.edit();                                      //cria o editor
-        System.out.println("Contexto "+ notaselecionada);
     }
+
     public void Salvar(Integer num, String conteudo){
-        if (notas.isEmpty() == true ){
+        if (notas.size()==1 ){
             notas.add(conteudo);
+            System.out.println("Não tinha nada aqui, preenchendo...");// se não tem valor valido, vai adicionar
+
         }else{
-        notas.set(num,conteudo);
+
+            if (num==null){
+                num=10;
+                notas.add("a adicionar");
+            }
+
+            if (notas.size()>=num){
+                notas.set(num,conteudo);
+                System.out.println("Achei o valor! inserindo ("+ conteudo +") no espaço "+ num);//existe o valor valido, altera existente
+
+            }else{
+                notas.add(conteudo);
+                System.out.println("o array esta vazio, preenchendo...");//
+            }
         }
 
+        setando.clear();
         setando.addAll(notas);
         editorLages.putStringSet("key", setando);
-        //editorLages.putString(notas.get(num),conteudo);//Bota o conteudo na chave, preciso pegar o contexto do ngc, e armazenar no lugar certo
-        editorLages.commit();//salva as alterações no preferences
+        editorLages.commit();
         notas.clear();
         notas.addAll(setando);
-        //notas= (List<String>) preferenciasLages.getAll();
-
     }
 
-
-
-
-
-    //get
     public String acessarNota(){
-        notas.add("frase 1");
-        notas.add("Frase 2");
-        notas.add("frase 3");
-
-        //System.out.println("Acessar nota" + notaselecionada.toString());
-        //return preferenciasLages.getString(selNote,"");
         try{
-
-            System.out.println("Acessar nota" + notaselecionada.toString());
             String s = notas.get(notaselecionada);
             return s;
         }catch (Exception e){
-            return "nulo  :"+  notaselecionada ;
+            return "escreva algo";
         }
-
     }
 
-
-    //set
     public void defineNota(Integer notaselecionada){
-
         this.notaselecionada=notaselecionada;
-        //System.out.println(i);
-        System.out.println("definir nota "+this.notaselecionada);
-
-
     }
 
     public Integer getNotaselecionada() {

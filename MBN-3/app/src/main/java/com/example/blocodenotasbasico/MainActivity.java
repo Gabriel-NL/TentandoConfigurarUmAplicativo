@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 import java.util.List;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,24 +42,17 @@ public class MainActivity extends AppCompatActivity {
 
         /*
         sem isto, o fragment first não funciona
-        * setSupportActionBar(binding.toolbar);
-
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
-        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        *
         *
         * */
 
         //aqui embaixo, as notas são armazenadas
-        LinearLayout layout = (LinearLayout) findViewById(R.id.layoutFragment);
-        for (int i=0;i< 2;i++ ){
-            Button btn = new Button(this);
-            btn.setText("batata "+ i);
-            btn.setTextColor(Color.BLACK);
-            caixaDeBotoes.add(btn);
-            layout.addView(btn);
+        conteudo();
+        setSupportActionBar(binding.toolbar);
 
-        }
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+        appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
 
 
@@ -100,5 +94,29 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public void redefinirNome(View view){
+        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show();
+    }
+    public void conteudo(){
+        LinearLayout layout = (LinearLayout) findViewById(R.id.layoutFragment);
+        for (int i=0;i< 2;i++ ){
+            String nomebotao= "botao "+i;
+            Button btn = new Button(this);
+            btn.setText("batata assada");
+            btn.setTextColor(Color.BLACK);
+            //btn.setId(Integer.parseInt(nomebotao));
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btn.setText("batata queimada");
+                }
+            });
+            caixaDeBotoes.add(btn);
+            layout.addView(btn);
+
+        }
     }
 }

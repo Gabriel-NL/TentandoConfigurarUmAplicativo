@@ -10,13 +10,13 @@
 
     <Button
         android:id="@+id/button_first"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="4dp"
-        android:text="@string/next"
+        android:text="Criar Nota"
         android:textColor="@color/black" />
 
 </LinearLayout>

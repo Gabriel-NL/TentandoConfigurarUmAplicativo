@@ -6,8 +6,8 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.meublocodenotas"
-        minSdk 16
+        applicationId "com.example.blocodenotasbasico"
+        minSdk 21
         targetSdk 31
         versionCode 1
         versionName "1.0"

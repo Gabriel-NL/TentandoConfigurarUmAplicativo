@@ -45,6 +45,8 @@ public class SecondFragment extends Fragment {
             public void onClick(View view) {
                 //ant.Salvar(textoMultiLineSecondFragment.toString());
                 String txt = textoMultiLineSecondFragment.getText().toString();
+                System.out.println("second fragment envia: "+txt);
+                //System.out.println(fnc.getNotaselecionada());
                 fnc.Salvar(fnc.getNotaselecionada(),txt);
 
 

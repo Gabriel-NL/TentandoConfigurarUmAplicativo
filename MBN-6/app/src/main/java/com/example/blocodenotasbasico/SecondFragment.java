@@ -15,7 +15,6 @@ import com.example.blocodenotasbasico.databinding.FragmentSecondBinding;
 public class SecondFragment extends Fragment {
 
     private FragmentSecondBinding binding;
-    Anotacao ant = new Anotacao();
 
 
 
@@ -34,13 +33,21 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Funcionador fnc = Funcionador.getFuncionador();
+        //Funcionador fnc = new Funcionador();
         TextView textoMultiLineSecondFragment = (TextView) getView().findViewById(R.id.textoMultiLineSecondFragment);
-        textoMultiLineSecondFragment.setText(ant.acessarNota(ant.getChave()));
+        textoMultiLineSecondFragment.setText(fnc.acessarNota());
+        //System.out.println(fnc.getNotaselecionada());
+
 
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ant.Salvar(textoMultiLineSecondFragment.toString());
+                //ant.Salvar(textoMultiLineSecondFragment.toString());
+                String txt = textoMultiLineSecondFragment.getText().toString();
+                fnc.Salvar(fnc.getNotaselecionada(),txt);
+
+
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
 
